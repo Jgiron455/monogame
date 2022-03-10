@@ -25,6 +25,7 @@ public class Main {
         int currentPlayerSelected = 0;
 
         while(!game.isGameOver){
+            System.out.println("\n-----------------------\n");
 
             // make sure we keep the loop within the player size
             if (currentPlayerSelected >= game.playerList.size()) {

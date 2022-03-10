@@ -66,6 +66,8 @@ public class Main {
                     currentSquare.chargePlayer(curPlyr);
 
                     // increase owner's money
+                    // todo write your own logic.... this is to advance
+                    // todo https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
                     game.playerList.stream()
                             .forEach(player -> {
                                 Optional<String> square = player.getPropertiesOwned().stream()

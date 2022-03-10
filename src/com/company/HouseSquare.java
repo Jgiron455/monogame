@@ -19,10 +19,13 @@ public class HouseSquare extends Square {
 
     @Override
     public void sell(Player player) {
+        // todo write your own logic.... this is to advance
+        // todo https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
         Optional<String> found = player.getPropertiesOwned()
                 .stream()
                 .parallel()
                 .filter(property -> property.equalsIgnoreCase(this.name)).findFirst();
+
         if(isOwned && found.isPresent()) {
             player.removeProperty(player.getPropertiesOwned().indexOf(found.get()));
             player.setMoney(this.price);

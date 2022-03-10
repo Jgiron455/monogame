@@ -38,6 +38,7 @@ public class Main {
             }
 
 
+
             // Current Player
             Player curPlyr = game.playerList.get(currentPlayerSelected);
             System.out.println("Its: " + curPlyr.getName() + " turn");
@@ -60,6 +61,7 @@ public class Main {
             } else {
                 if(!currentSquare.isOwned) {
                     // buy square
+                    System.out.println(curPlyr.getName() + " buys: " + currentSquare.name);
                     currentSquare.buy(curPlyr);
                 } else {
                     // charge player
@@ -73,16 +75,14 @@ public class Main {
                                 Optional<String> square = player.getPropertiesOwned().stream()
                                     .filter(property -> property.equalsIgnoreCase(currentSquare.name)).findFirst();
                                 if(square.isPresent()){
+
+                                    System.out.println(curPlyr.getName() + " lands on: " + currentSquare.name + " which is owned by " + player.getName());
                                     player.setMoney(player.getMoney()+currentSquare.chargeCost);
                                 }
                             });
                 }
             }
 
-            // if player doesn't have money remove them from board
-            if(curPlyr.getMoney() <= 0 && game.playerList.size()>0){
-                game.playerList.remove(game.playerList.indexOf(curPlyr));
-            }
 
             // Summary
             System.out.println("Summary: " + curPlyr.getName() +
@@ -92,6 +92,12 @@ public class Main {
 
             // Next player
             currentPlayerSelected +=1;
+
+
+            // if player doesn't have money remove them from board
+            if(curPlyr.getMoney() <= 0 && game.playerList.size()>0){
+                game.playerList.remove(game.playerList.indexOf(curPlyr));
+            }
         }
 
     }
